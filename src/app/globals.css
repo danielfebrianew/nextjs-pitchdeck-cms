@@ -309,10 +309,12 @@ ul {
   background: linear-gradient(135deg, #1a0508 0%, #0d0306 50%, #1a0508 100%);
   border-bottom: 1px solid rgba(180, 40, 55, 0.25);
   color: #f0e6d2;
-  min-height: 100svh;
+  height: 100svh;
   overflow: hidden;
   padding-top: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-bg-glow {
@@ -334,9 +336,11 @@ ul {
 .hero-main-grid {
   align-items: stretch;
   display: grid;
+  flex: 1;
   grid-template-columns: 1.05fr 0.95fr;
   margin-top: 64px;
-  min-height: 78vh;
+  min-height: 0;
+  overflow: hidden;
   position: relative;
   z-index: 1;
 }
@@ -347,29 +351,48 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px var(--grid-px) 60px;
+  overflow: hidden;
+  padding: 32px var(--grid-px) 40px;
 }
 
 .hero-eyebrow {
   color: var(--hero-cream);
   font-size: 11px;
   letter-spacing: 0.32em;
-  margin-bottom: 36px;
+  margin-bottom: 20px;
 }
 
 .hero-display-title {
   color: #f4ead4;
   font-family: var(--font-display);
-  font-size: clamp(3.4rem, 7.8vw, 7.2rem);
+  font-size: clamp(2.2rem, 4.8vw, 4.6rem);
   font-weight: 700;
   letter-spacing: 0.01em;
-  line-height: 0.92;
-  margin: 0 0 36px;
+  line-height: 1.05;
+  margin: 0 0 24px;
   text-transform: uppercase;
 }
 
+.hdt-line1,
 .hdt-line2 {
   display: block;
+}
+
+/* "Tanpa" with hand-drawn strikethrough */
+.hdt-tanpa {
+  display: inline-block;
+  position: relative;
+}
+
+.hdt-strike {
+  height: 0.18em;
+  left: -2%;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 104%;
 }
 
 /* "Coding" in red italic with scribble */
@@ -409,17 +432,17 @@ ul {
 
 .hero-body {
   color: rgba(240, 230, 210, 0.7);
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 300;
-  line-height: 1.8;
-  margin: 0 0 44px;
+  line-height: 1.7;
+  margin: 0 0 28px;
   max-width: 480px;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
-  margin-bottom: 64px;
+  margin-bottom: 36px;
 }
 
 .hero-btn-primary {
@@ -455,7 +478,7 @@ ul {
 .hero-stat-value {
   color: var(--hero-cream);
   font-family: var(--font-display);
-  font-size: 44px;
+  font-size: 36px;
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1;
@@ -468,141 +491,135 @@ ul {
   margin-top: 10px;
 }
 
-/* Right panel column */
-.hero-panel-col {
-  display: flex;
-  flex-direction: column;
-  padding: 48px var(--grid-px) 60px 56px;
+/* ─── Scrapbook Panel (Right) ───────────────────────────────── */
+
+.hero-scrapbook {
+  overflow: hidden;
   position: relative;
 }
 
-.hero-handwritten {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  right: calc(var(--grid-px) + 16px);
-  top: 60px;
-  transform: rotate(-5deg);
-  z-index: 4;
-}
-
-.hero-handwritten-made {
-  color: #e85a5a;
-  font-family: Georgia, serif;
-  font-size: 1.4rem;
-  font-style: italic;
-  line-height: 1.1;
-  opacity: 0.9;
-}
-
-.hero-handwritten-brand {
-  color: var(--hero-cream);
-  display: block;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  margin-top: 4px;
-}
-
-.hero-panel-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  margin-top: 0;
-}
-
-.hero-panel-meta .mono {
-  color: rgba(240, 230, 210, 0.5);
-  font-size: 10.5px;
-}
-
-.hero-panel {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(180, 40, 55, 0.55) 0%,
-    rgba(60, 10, 20, 0.7) 50%,
-    rgba(15, 3, 8, 0.95) 100%
-  );
-  border: 1px solid rgba(201, 169, 97, 0.2);
-  flex: 1;
-  min-height: 520px;
-  overflow: visible;
-  position: relative;
-}
-
-.hero-panel-glow {
-  background: radial-gradient(
-    ellipse 70% 55% at 50% 44%,
-    rgba(180, 40, 55, 0.45) 0%,
-    rgba(60, 10, 20, 0.5) 50%,
-    transparent 100%
-  );
+.sb-fabric {
+  background: radial-gradient(ellipse at 65% 35%, #3d0a0a 0%, #0d0305 60%);
   inset: 0;
   pointer-events: none;
   position: absolute;
   z-index: 0;
 }
 
-/* giant K watermark */
-.hero-panel-k {
-  bottom: -50px;
-  color: var(--hero-cream);
-  font-family: var(--font-display);
-  font-size: clamp(12rem, 22vw, 22rem);
-  font-weight: 700;
-  left: -60px;
-  letter-spacing: 0.02em;
-  line-height: 0.8;
-  opacity: 0.95;
-  pointer-events: none;
+/* torn paper — stage utama; semua konten di-anchor ke sini */
+.sb-paper-wrap {
+  bottom: 0;
+  box-shadow: 0 -4px 32px rgba(0, 0, 0, 0.5);
+  left: 0;
+  overflow: visible;
   position: absolute;
-  text-shadow: 0 0 60px rgba(180, 40, 55, 0.4);
-  text-transform: uppercase;
+  right: 0;
+  top: 15%;
   z-index: 2;
 }
 
-.hero-panel-stamp {
-  background: rgba(15, 3, 8, 0.85);
-  border: 1px solid rgba(201, 169, 97, 0.4);
-  color: var(--hero-cream);
-  font-size: 9.5px;
-  letter-spacing: 0.22em;
-  padding: 10px 16px;
-  position: absolute;
-  right: -1px;
-  text-transform: uppercase;
-  top: -1px;
-  z-index: 3;
-}
-
-.hero-panel-footer {
-  align-items: center;
-  bottom: 0;
+.sb-meta {
   display: flex;
   justify-content: space-between;
-  left: 0;
-  padding: 20px 24px;
+  left: 24px;
   position: absolute;
-  right: 0;
-  z-index: 3;
+  right: 24px;
+  top: 16px;
+  z-index: 10;
+}
+.sb-meta .mono {
+  color: rgba(240, 230, 210, 0.4);
+  font-size: 10px;
 }
 
-.hero-panel-footer .mono {
-  color: rgba(240, 230, 210, 0.5);
-  font-size: 10.5px;
+/* polaroid base */
+.sb-polaroid {
+  background: #fff;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  padding: 7px 7px 24px;
+  position: absolute;
 }
 
-.hero-arrow-badge {
-  align-items: center;
-  border: 1px solid var(--hero-cream);
-  border-radius: 50%;
+/* polaroid kiri — overlap keluar panel ke kiri, setinggi tepi atas paper */
+.sb-polaroid-1 {
+  height: 25%;
+  left: 6%;
+  top: 70%;
+  transform: rotate(-12deg);
+  width: 25%;
+  z-index: 6;
+}
+
+/* polaroid kanan — overlap keluar panel ke kanan */
+.sb-polaroid-2 {
+  height: 27%;
+  right: -12px;
+  top: 3%;
+  transform: rotate(6deg);
+  width: 27%;
+  z-index: 7;
+}
+
+/* grape polaroid — kiri, setinggi polaroid-1, di atas paper */
+.sb-polaroid-3 {
+  height: 120px;
+  left: 6%;
+  top: 70%;
+  transform: rotate(-12deg);
+  width: 106px;
+  z-index: 6;
+}
+
+/* botol — tengah, berdiri di atas paper, tidak terlalu besar */
+.sb-bottle {
+  bottom: 100;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.75));
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 8;
+}
+
+/* sticky note — kanan bawah di atas paper, cukup besar */
+.sb-note {
+  bottom: 1%;
+  height: 40%;
+  position: absolute;
+  right: 2%;
+  transform: rotate(17deg);
+  width: 40%;
+  z-index: 9;
+}
+
+/* handwriting — kiri, sejajar dengan polaroid-1 */
+.sb-handwrite {
+  color: #7a1a1a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-style: italic;
+  left: 15%;
+  line-height: 1.75;
+  opacity: 0.9;
+  pointer-events: none;
+  position: absolute;
+  top: 5%;
+  transform: rotate(-2deg);
+  z-index: 10;
+}
+
+.sb-star {
   color: var(--hero-cream);
-  display: inline-flex;
-  font-size: 18px;
-  height: 48px;
-  justify-content: center;
-  width: 48px;
+  font-size: 11px;
+  opacity: 0.55;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
 }
+.sb-star-1 { left: 6%; top: 46%; }
+.sb-star-2 { bottom: 20%; right: 28%; font-size: 9px; }
 
 /* legacy classes still referenced by other sections */
 .stat-value {

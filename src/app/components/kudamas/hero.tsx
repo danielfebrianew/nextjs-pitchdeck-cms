@@ -24,9 +24,29 @@ export function Hero() {
             <div className="hero-eyebrow mono">★ Proposal untuk PT Kudamas</div>
 
             <h1 className="hero-display-title">
-              Edit Konten<br />
+              <span className="hdt-line1">Edit Konten</span>
               <span className="hdt-line2">
-                Tanpa{" "}
+                <span className="hdt-tanpa">
+                  Tanpa
+                  <svg viewBox="0 0 180 14" className="hdt-strike" preserveAspectRatio="none" aria-hidden>
+                    <path
+                      d="M 4 7 Q 40 4 90 7 Q 140 10 176 6"
+                      fill="none"
+                      stroke="#f4ead4"
+                      strokeWidth="2.8"
+                      strokeLinecap="round"
+                      opacity="0.9"
+                    />
+                    <path
+                      d="M 8 9 Q 50 6 100 9 Q 148 12 174 8"
+                      fill="none"
+                      stroke="#f4ead4"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      opacity="0.45"
+                    />
+                  </svg>
+                </span>{" "}
                 <span className="hdt-coding">
                   Coding
                   {/* red scribble circle */}
@@ -62,7 +82,6 @@ export function Hero() {
                   </svg>
                 </span>
               </span>
-              <br />
               <span className="hdt-gold">
                 Sama Sekali.
                 {/* gold underline scribble */}
@@ -110,51 +129,91 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* RIGHT */}
-        <Reveal className="hero-panel-col" delay={120}>
-          {/* "made for modern brand" handwritten note */}
-          <div className="hero-handwritten" aria-hidden>
-            <span className="hero-handwritten-made">made for</span>
-            <span className="hero-handwritten-brand mono">modern brand</span>
-            <svg width="18" height="18" viewBox="0 0 24 24">
-              <path
-                d="M12 2 L13.5 9 L21 10.5 L15 15.5 L17 22 L12 18 L7 22 L9 15.5 L3 10.5 L10.5 9 Z"
-                fill="none"
-                stroke="#c9a961"
-                strokeWidth="1.4"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+        {/* RIGHT — Scrapbook Panel */}
+        <Reveal className="hero-scrapbook" delay={120}>
+          {/* dark crimson bg */}
+          <div className="sb-fabric" />
 
-          <div className="hero-panel-meta">
+          {/* meta label */}
+          <div className="sb-meta" aria-hidden>
             <span className="mono">Edisi 01 — Proposal</span>
             <span className="mono">by Daniel · 2026</span>
           </div>
 
-          <div className="hero-panel">
-            <div className="hero-panel-glow" />
-
-            {/* bottle image */}
+          {/* polaroid kiri atas — anchored to .hero-scrapbook, overlaps left edge */}
+          <div className="sb-polaroid sb-polaroid-1">
             <Image
-              src="/kudamas-hero.png"
-              alt="Kudamas wine bottle"
+              src="/polaroid-1.png"
+              alt=""
               fill
-              sizes="(max-width: 880px) 100vw, 45vw"
-              style={{ objectFit: "contain", objectPosition: "center bottom" }}
-              priority
+              sizes="(max-width: 900px) 40vw, 900px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
+          {/* polaroid kanan atas — anchored to .hero-scrapbook, overlaps right edge */}
+          <div className="sb-polaroid sb-polaroid-2">
+            <Image
+              src="/polaroid-2.png"
+              alt=""
+              fill
+              sizes="(max-width: 900px) 40vw, 900px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
+          {/* paper stage — all content below is anchored to this */}
+          <div className="sb-paper-wrap" aria-hidden>
+            <Image
+              src="/torn-paper.png"
+              alt=""
+              fill
+              loading="eager"
+              sizes="(max-width: 900px) 40vw, 900px"
+              style={{ objectFit: "fill" }}
             />
 
-            {/* giant decorative K */}
-            <div className="hero-panel-k" aria-hidden>K</div>
-
-            {/* stamp */}
-            <div className="hero-panel-stamp mono">Proposal — 2026</div>
-
-            <div className="hero-panel-footer">
-              <span className="mono">Independent Developer</span>
-              <span className="hero-arrow-badge">↗</span>
+            {/* botol */}
+            <div className="sb-bottle">
+              <Image
+                src="/kudamas-transparent.png"
+                alt="Kudamas wine bottle"
+                fill
+                sizes="(max-width: 768px) 18vw, 320px"
+                style={{ objectFit: "contain", objectPosition: "center bottom" }}
+                priority
+              />
             </div>
+
+            {/* sticky note kanan bawah */}
+            <div className="sb-note">
+              <Image
+                src="/note.png"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 40vw, 900px"
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+
+            {/* grape polaroid bawah kiri */}
+            {/* <div className="sb-polaroid sb-polaroid-3">
+              <Image
+                src="/grape-polaroid.png"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 40vw, 900px"
+                style={{ objectFit: "cover" }}
+              />
+            </div> */}
+
+            {/* handwriting */}
+            <div className="sb-handwrite">
+              Good wine<br />Good night<br />Good story ✦
+            </div>
+
+            <span className="sb-star sb-star-1">✦</span>
+            <span className="sb-star sb-star-2">✦</span>
           </div>
         </Reveal>
       </div>

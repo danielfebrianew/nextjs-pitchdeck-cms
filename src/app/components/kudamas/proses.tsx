@@ -21,7 +21,7 @@ export function Proses() {
                 <span className="proses-title-underline" />
               </span>
               <br />
-              dalam 2 Minggu.
+              dalam 1 Bulan.
             </h2>
             <p className="proses-body">
               Lima fase, satu sprint. Setiap fase punya deliverable konkret dan
@@ -29,7 +29,7 @@ export function Proses() {
             </p>
             <div className="proses-badge">
               <span className="proses-badge-dot" />
-              <span className="proses-badge-label">Total: 14 Hari Kerja</span>
+              <span className="proses-badge-label">Total: 31 Hari Kerja</span>
             </div>
           </Reveal>
         </div>
