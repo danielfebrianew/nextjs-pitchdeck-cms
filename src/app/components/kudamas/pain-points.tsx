@@ -6,7 +6,7 @@ export function PainPoints() {
   return (
     <section
       id="masalah"
-      className="section"
+      className="section pain-points-section"
       style={{
         background: "#f8f4ec",
         backgroundImage: `

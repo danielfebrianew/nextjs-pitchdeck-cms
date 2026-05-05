@@ -1,9 +1,48 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { heroStats, TOTAL_SECTIONS } from "./constants";
 import { Reveal } from "./reveal";
 import { SectionMeta } from "./section-meta";
+
+function ScrapbookReveal({
+  children,
+  className,
+  delay,
+  rotate = 0,
+  x,
+  y = 24,
+  ariaHidden,
+}: {
+  children: ReactNode;
+  className: string;
+  delay: number;
+  rotate?: number;
+  x?: string;
+  y?: number;
+  ariaHidden?: boolean;
+}) {
+  const transformBase = x ? { x } : {};
+
+  return (
+    <motion.div
+      aria-hidden={ariaHidden}
+      className={className}
+      initial={{ opacity: 0, y, rotate, ...transformBase }}
+      whileInView={{ opacity: 1, y: 0, rotate, ...transformBase }}
+      viewport={{ once: true, amount: 0.16 }}
+      transition={{
+        duration: 0.7,
+        delay: delay / 1000,
+        ease: [0.22, 0.61, 0.36, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export function Hero() {
   return (
@@ -130,18 +169,28 @@ export function Hero() {
         </div>
 
         {/* RIGHT — Scrapbook Panel */}
-        <Reveal className="hero-scrapbook" delay={120}>
+        <div className="hero-scrapbook">
           {/* dark crimson bg */}
-          <div className="sb-fabric" />
+          <motion.div
+            className="sb-fabric"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.12,
+              ease: [0.22, 0.61, 0.36, 1],
+            }}
+          />
 
           {/* meta label */}
-          <div className="sb-meta" aria-hidden>
+          <ScrapbookReveal ariaHidden className="sb-meta" delay={220} y={12}>
             <span className="mono">Edisi 01 — Proposal</span>
             <span className="mono">by Daniel · 2026</span>
-          </div>
+          </ScrapbookReveal>
 
           {/* polaroid kiri atas — anchored to .hero-scrapbook, overlaps left edge */}
-          <div className="sb-polaroid sb-polaroid-1">
+          <ScrapbookReveal className="sb-polaroid sb-polaroid-1" delay={560} rotate={-12}>
             <Image
               src="/polaroid-1.png"
               alt=""
@@ -149,10 +198,10 @@ export function Hero() {
               sizes="(max-width: 900px) 40vw, 900px"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </ScrapbookReveal>
 
           {/* polaroid kanan atas — anchored to .hero-scrapbook, overlaps right edge */}
-          <div className="sb-polaroid sb-polaroid-2">
+          <ScrapbookReveal className="sb-polaroid sb-polaroid-2" delay={460} rotate={6}>
             <Image
               src="/polaroid-2.png"
               alt=""
@@ -160,12 +209,12 @@ export function Hero() {
               sizes="(max-width: 900px) 40vw, 900px"
               style={{ objectFit: "cover" }}
             />
-          </div>
+          </ScrapbookReveal>
 
           {/* paper stage — all content below is anchored to this */}
-          <div className="sb-paper-wrap" aria-hidden>
+          <ScrapbookReveal ariaHidden className="sb-paper-wrap" delay={320} y={30}>
             <Image
-              src="/torn-paper.png"
+              src="/jukebox.png"
               alt=""
               fill
               loading="eager"
@@ -174,7 +223,7 @@ export function Hero() {
             />
 
             {/* botol */}
-            <div className="sb-bottle">
+            <ScrapbookReveal className="sb-bottle" delay={660} x="-50%" y={28}>
               <Image
                 src="/kudamas-transparent.png"
                 alt="Kudamas wine bottle"
@@ -183,10 +232,10 @@ export function Hero() {
                 style={{ objectFit: "contain", objectPosition: "center bottom" }}
                 priority
               />
-            </div>
+            </ScrapbookReveal>
 
             {/* sticky note kanan bawah */}
-            <div className="sb-note">
+            <ScrapbookReveal className="sb-note" delay={760} rotate={17} y={20}>
               <Image
                 src="/note.png"
                 alt=""
@@ -194,7 +243,7 @@ export function Hero() {
                 sizes="(max-width: 768px) 40vw, 900px"
                 style={{ objectFit: "contain" }}
               />
-            </div>
+            </ScrapbookReveal>
 
             {/* grape polaroid bawah kiri */}
             {/* <div className="sb-polaroid sb-polaroid-3">
@@ -208,14 +257,30 @@ export function Hero() {
             </div> */}
 
             {/* handwriting */}
-            <div className="sb-handwrite">
+            <ScrapbookReveal className="sb-handwrite" delay={860} rotate={-2} y={14}>
               Good wine<br />Good night<br />Good story ✦
-            </div>
+            </ScrapbookReveal>
 
-            <span className="sb-star sb-star-1">✦</span>
-            <span className="sb-star sb-star-2">✦</span>
-          </div>
-        </Reveal>
+            <motion.span
+              className="sb-star sb-star-1"
+              initial={{ opacity: 0, scale: 0.4 }}
+              whileInView={{ opacity: 0.55, scale: 1 }}
+              viewport={{ once: true, amount: 0.16 }}
+              transition={{ duration: 0.45, delay: 0.96, ease: [0.22, 0.61, 0.36, 1] }}
+            >
+              ✦
+            </motion.span>
+            <motion.span
+              className="sb-star sb-star-2"
+              initial={{ opacity: 0, scale: 0.4 }}
+              whileInView={{ opacity: 0.55, scale: 1 }}
+              viewport={{ once: true, amount: 0.16 }}
+              transition={{ duration: 0.45, delay: 1.04, ease: [0.22, 0.61, 0.36, 1] }}
+            >
+              ✦
+            </motion.span>
+          </ScrapbookReveal>
+        </div>
       </div>
     </section>
   );

@@ -6,22 +6,35 @@ import { navLinks } from "./constants";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [pastHero, setPastHero] = useState(false);
+  const [overInk, setOverInk] = useState(true);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
+      const probeY = y + 96;
+      const activeSection = Array.from(document.querySelectorAll("section")).find((section) => {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + y;
+        const sectionBottom = rect.bottom + y;
+
+        return sectionTop <= probeY && sectionBottom > probeY;
+      });
+
       setScrolled(y > 20);
-      setPastHero(y > window.innerHeight * 0.8);
+      setOverInk(activeSection?.getAttribute("data-bg") === "ink");
     };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
-  const overHero = !pastHero;
-
-  const navStyle: React.CSSProperties = overHero
+  const navStyle: React.CSSProperties = overInk
     ? {
         background: scrolled
           ? "linear-gradient(180deg, rgba(13,3,6,0.92) 0%, rgba(26,5,8,0.85) 100%)"
@@ -70,7 +83,7 @@ export function Navbar() {
         Daniel{" "}
         <span
           style={{
-            color: overHero ? "#c9a961" : "var(--color-muted)",
+            color: overInk ? "#c9a961" : "var(--color-muted)",
             fontStyle: "italic",
             fontWeight: 400,
             fontSize: "0.75em",
@@ -87,7 +100,7 @@ export function Navbar() {
             <a
               href={link.href}
               style={{
-                color: overHero
+                color: overInk
                   ? "rgba(240,230,210,0.65)"
                   : "var(--color-muted)",
               }}
@@ -102,7 +115,7 @@ export function Navbar() {
         href="#penutup"
         className="nav-cta"
         style={
-          overHero
+          overInk
             ? { borderColor: "#c9a961", color: "#c9a961" }
             : {}
         }

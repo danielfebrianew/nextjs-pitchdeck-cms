@@ -92,32 +92,32 @@ export const prosesSteps = [
     n: "01",
     t: "Discovery & Brand Audit",
     d: "Pelajari brand Kudamas, koleksi produk, dan target audience. Map struktur konten yang dibutuhkan.",
-    dur: "Hari 1-2",
+    dur: "Hari 1-4",
   },
   {
     n: "02",
     t: "Schema & Wireframe",
     d: "Rancang content model di Sanity untuk produk, kampanye, distributor, plus wireframe layout website.",
-    dur: "Hari 3-4",
+    dur: "Hari 5-10",
   },
   {
     n: "03",
     t: "Desain & Build",
     d: "UI design custom dan development Next.js. Iterasi desain bersama tim Kudamas sampai approve.",
-    dur: "Hari 5-10",
+    dur: "Hari 10-26",
     highlight: true,
   },
   {
     n: "04",
     t: "Migrasi Konten & QA",
     d: "Pindahkan data produk Kudamas ke CMS baru, lakukan QA lintas device dan browser.",
-    dur: "Hari 11-12",
+    dur: "Hari 26-29",
   },
   {
     n: "05",
     t: "Training & Go Live",
     d: "Walkthrough 1 jam dengan tim marketing Kudamas dan dokumentasi tertulis lengkap.",
-    dur: "Hari 13-14",
+    dur: "Hari 29-31",
   },
 ];
 
@@ -128,7 +128,7 @@ export const hargaData = {
     "Berbeda dengan vendor website pada umumnya, KUDAMAS membayar Daniel sekali di awal. Website beserta CMS sepenuhnya jadi milik Kudamas tanpa recurring fee dan tanpa vendor lock-in.",
   badge: "Paket Lengkap",
   label: "One-time Project",
-  value: "Rp 5.000.000",
+  value: "Rp 7.500.000",
   subtext: "Jual putus / termasuk training & 30 hari support",
   cta: "Diskusi Lebih Lanjut",
   includes: [
@@ -142,7 +142,6 @@ export const hargaData = {
   ],
   valueChecklist: [
     "Hemat 80+ jam developer / tahun",
-    "Tim Kudamas publish tanpa antre",
     "Skalabel untuk 100+ varian produk",
     "Bebas vendor lock-in selamanya",
     "Source code milik Kudamas",
