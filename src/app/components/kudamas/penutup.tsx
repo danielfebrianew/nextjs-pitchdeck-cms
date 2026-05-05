@@ -1,71 +1,107 @@
-import Image from "next/image";
 import { TOTAL_SECTIONS } from "./constants";
 import { Reveal } from "./reveal";
 import { SectionMeta } from "./section-meta";
 
+const contactItems = [
+  { label: "WhatsApp", value: "+62 851-6944-0023" },
+  { label: "Email", value: "danielfebrian61@gmail.com" },
+  { label: "Response", value: "< 24 jam" },
+  { label: "Slot", value: "Q1–Q2 2026 · 2 tersisa" },
+];
+
 export function Penutup() {
   return (
-    <section id="penutup" className="section section-ink closing-section" data-bg="ink">
+    <section id="penutup" className="penutup-section" data-bg="ink">
+      <div className="penutup-deco-k">K</div>
+      <div className="penutup-hairline" />
       <SectionMeta index={7} total={TOTAL_SECTIONS} label="Get In Touch" />
 
-      <div className="closing-grid">
-        <Reveal>
-          <div className="eyebrow">Mari Mulai</div>
-          <h2 className="closing-title">
-            Siap Punya Website yang <em>Setara Brand Kudamas?</em>
-          </h2>
-          <p>
-            Saya Daniel, independent developer yang akan menangani proyek ini
-            end-to-end. 30 menit konsultasi gratis untuk diskusi kebutuhan tim
-            Kudamas, tanpa komitmen.
-          </p>
-          <div className="closing-actions">
-            <a
-              href="https://wa.me/6285169440023"
-              target="_blank"
-              rel="noreferrer"
-              className="btn"
-            >
-              WhatsApp +62 851-6944-0023 <span className="arrow">↗</span>
-            </a>
-            <a href="#hero" className="btn btn-dark-ghost">
-              Kembali ke atas <span className="arrow">↑</span>
-            </a>
-          </div>
-          <div className="closing-meta">
-            <div>
-              <span className="mono">Disiapkan oleh</span>
-              <strong>Daniel / Independent Dev</strong>
+      <div className="penutup-grid">
+        {/* LEFT — headline + body */}
+        <div>
+          <Reveal>
+            <div className="penutup-eyebrow">↗ Mari Mulai Percakapan</div>
+            <h2 className="penutup-title">
+              Mari<br />
+              <span className="penutup-title-script">berkenalan</span><br />
+              dengan Daniel.
+            </h2>
+            <div className="penutup-note">
+              <p>
+                Independent developer Jakarta. Spesialis website &amp; headless CMS
+                untuk brand premium yang ingin lepas dari ketergantungan vendor.
+              </p>
+              <p className="penutup-note-sub">
+                30 menit konsultasi gratis — tanpa komitmen, tanpa biaya, tanpa pitch agresif.
+              </p>
             </div>
-            <div>
-              <span className="mono">Available</span>
-              <strong>Q1-Q2 2026 / 2 slot</strong>
-            </div>
-            <div>
-              <span className="mono">Response</span>
-              <strong>&lt; 24 jam</strong>
-            </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
-        <Reveal delay={120} className="closing-mark">
-          <Image
-            src="/kudamas-merah.png"
-            alt="Kudamas Merah wine bottle"
-            fill
-            style={{ objectFit: "contain", objectPosition: "center bottom" }}
-            sizes="(max-width: 880px) 100vw, 40vw"
-          />
-          <span>
-            <i />
-            <span className="mono">PT KUDAMAS / 2026</span>
-          </span>
-        </Reveal>
+        {/* RIGHT — contact card */}
+        <div className="penutup-card-wrap">
+          <Reveal delay={100}>
+            <div className="penutup-card">
+              <div className="penutup-card-corner">N°01</div>
+              <div className="penutup-card-by">Disiapkan Oleh</div>
+              <div className="penutup-card-name">Daniel</div>
+              <div className="penutup-card-role">independent developer</div>
+
+              <div className="penutup-card-divider">
+                <span /><span>···</span><span />
+              </div>
+
+              <ul className="penutup-contact-list">
+                {contactItems.map((item) => (
+                  <li key={item.label}>
+                    <span className="penutup-contact-label">{item.label}</span>
+                    <span className="penutup-contact-value">{item.value}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://wa.me/6285169440023"
+                target="_blank"
+                rel="noreferrer"
+                className="penutup-cta"
+              >
+                Mulai via WhatsApp <span>↗</span>
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={250}>
+            <div className="penutup-floating-tag">✦ Tersedia 2026</div>
+          </Reveal>
+        </div>
       </div>
 
-      <div className="footer-line">
-        <span className="mono">Daniel / Pitch Deck untuk PT Kudamas - Edisi 01</span>
-        <span className="mono">Built with Next.js + Framer Motion + Sanity</span>
+      {/* Spread row */}
+      <Reveal delay={200}>
+        <div className="penutup-spread">
+          <div className="penutup-spread-block">
+            <div className="penutup-spread-sub">Project —</div>
+            <div className="penutup-spread-val">2026 / 01</div>
+          </div>
+          <span className="penutup-spread-line" />
+          <div className="penutup-spread-block penutup-spread-block--center">
+            <div className="penutup-spread-script">Salud</div>
+            <div className="penutup-spread-sub">— Cheers to PT Kudamas —</div>
+          </div>
+          <span className="penutup-spread-line" />
+          <div className="penutup-spread-block penutup-spread-block--right">
+            <div className="penutup-spread-sub">Edisi</div>
+            <div className="penutup-spread-val">I / MMXXVI</div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Footer */}
+      <div className="penutup-footer">
+        <span>© Daniel · Pitch Deck untuk PT Kudamas</span>
+        <a href="#hero" className="penutup-footer-back">Kembali ke Atas ↑</a>
+        <span>Built with Next.js + Sanity</span>
       </div>
     </section>
   );

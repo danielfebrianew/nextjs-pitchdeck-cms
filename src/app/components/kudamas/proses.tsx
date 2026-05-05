@@ -4,41 +4,51 @@ import { SectionMeta } from "./section-meta";
 
 export function Proses() {
   return (
-    <section id="proses" className="section section-cream">
+    <section id="proses" className="section proses-section" data-bg="ink">
+      <div className="proses-glow" />
       <SectionMeta index={5} total={TOTAL_SECTIONS} label="Process / Timeline" />
-      <div className="split-grid process-grid">
-        <div className="process-aside">
+
+      <div className="proses-grid">
+        {/* LEFT — sticky title block */}
+        <div className="proses-aside">
           <Reveal>
-            <div className="eyebrow">Cara Kerja</div>
-            <h2 className="section-title">
-              Dari Kickoff sampai <em>Go Live</em>
+            <div className="proses-eyebrow">↗ Cara Kerja</div>
+            <h2 className="proses-title">
+              Dari Kickoff<br />
+              sampai{" "}
+              <span className="proses-title-gold">
+                Go Live
+                <span className="proses-title-underline" />
+              </span>
               <br />
               dalam 2 Minggu.
             </h2>
-            <p className="body-copy">
+            <p className="proses-body">
               Lima fase, satu sprint. Setiap fase punya deliverable konkret dan
-              checkpoint dengan tim Kudamas.
+              checkpoint bersama tim Kudamas.
             </p>
-            <div className="timeline-badge">
-              <span />
-              <span className="mono">Total: 14 hari kerja</span>
+            <div className="proses-badge">
+              <span className="proses-badge-dot" />
+              <span className="proses-badge-label">Total: 14 Hari Kerja</span>
             </div>
           </Reveal>
         </div>
 
-        <div className="timeline">
+        {/* RIGHT — timeline */}
+        <div className="proses-timeline">
+          <div className="proses-timeline-line" />
           {prosesSteps.map((step, index) => (
             <Reveal key={step.n} delay={index * 80}>
-              <div className="timeline-row">
-                <div className={step.highlight ? "timeline-dot active" : "timeline-dot"}>
+              <div className="proses-row">
+                <div className={`proses-dot${step.highlight ? " proses-dot--active" : ""}`}>
                   {step.n}
                 </div>
-                <div>
-                  <div className="timeline-title">
-                    <h3>{step.t}</h3>
-                    <span className="mono">{step.dur}</span>
+                <div className="proses-content">
+                  <div className="proses-content-head">
+                    <div className="proses-step-title">{step.t}</div>
+                    <div className="proses-step-dur">{step.dur}</div>
                   </div>
-                  <p>{step.d}</p>
+                  <p className="proses-step-desc">{step.d}</p>
                 </div>
               </div>
             </Reveal>
