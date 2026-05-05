@@ -5,39 +5,51 @@ import { SectionMeta } from "./section-meta";
 
 export function Solusi() {
   return (
-    <section id="solusi" className="section">
+    <section id="solusi" className="section solusi-section" data-bg="ink">
+      <div className="solusi-glow" />
       <SectionMeta index={3} total={TOTAL_SECTIONS} label="The Solution" />
-      <div className="split-grid solution-grid">
-        <Reveal>
-          <CmsMockup />
-        </Reveal>
 
+      <div className="solusi-grid">
+        {/* LEFT — copy */}
         <div>
-          <Reveal>
-            <div className="eyebrow">Solusi</div>
-            <h2 className="section-title">
-              Satu Dashboard, <em>Seluruh Konten</em> Kudamas.
-            </h2>
-            <p className="body-copy">
-              Coba edit field di sebelah, lalu klik <strong>Save & Publish</strong>.
-              Begitulah tim marketing Kudamas akan bekerja setiap hari.
-            </p>
-          </Reveal>
+          <div className="solusi-eyebrow">↗ Solusi yang Diusulkan</div>
 
-          <div className="solution-list">
+          <h2 className="solusi-title">
+            Satu Dashboard,<br />
+            <span className="solusi-title-gold">
+              Seluruh Konten
+              <span className="solusi-title-underline" />
+            </span>
+            <br />
+            Kudamas.
+          </h2>
+
+          <p className="solusi-body">
+            Coba edit field di sebelah — lalu klik{" "}
+            <strong className="solusi-body-strong">Save &amp; Publish</strong>.
+            Begitulah tim marketing Kudamas akan bekerja, setiap hari — tanpa
+            coding, tanpa menunggu developer.
+          </p>
+
+          <div className="solusi-list">
             {solusiPoints.map((point, index) => (
-              <Reveal key={point.icon} delay={index * 90}>
-                <div className="solution-item">
-                  <div>{point.icon}</div>
-                  <section>
-                    <h3>{point.title}</h3>
-                    <p>{point.desc}</p>
-                  </section>
+              <Reveal key={point.icon} delay={index * 100}>
+                <div className="solusi-item">
+                  <div className="solusi-item-icon">{point.icon}</div>
+                  <div>
+                    <div className="solusi-item-title">{point.title}</div>
+                    <div className="solusi-item-desc">{point.desc}</div>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
+
+        {/* RIGHT — CMS mockup */}
+        <Reveal>
+          <CmsMockup />
+        </Reveal>
       </div>
     </section>
   );
