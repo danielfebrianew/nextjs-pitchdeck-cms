@@ -7,7 +7,7 @@ export function Harga() {
     <section id="harga" className="harga-section">
       <div className="harga-deco-num">5</div>
       <div className="harga-hairline" />
-      <SectionMeta index={6} total={TOTAL_SECTIONS} label="Investment" />
+      <SectionMeta index={7} total={TOTAL_SECTIONS} label="Investment" />
 
       <div className="harga-grid">
         {/* LEFT — investment card */}

@@ -14,7 +14,7 @@ export function Penutup() {
     <section id="penutup" className="penutup-section" data-bg="ink">
       <div className="penutup-deco-k">K</div>
       <div className="penutup-hairline" />
-      <SectionMeta index={7} total={TOTAL_SECTIONS} label="Get In Touch" />
+      <SectionMeta index={8} total={TOTAL_SECTIONS} label="Get In Touch" />
 
       <div className="penutup-grid">
         {/* LEFT — headline + body */}

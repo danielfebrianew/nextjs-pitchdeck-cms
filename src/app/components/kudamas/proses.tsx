@@ -6,7 +6,7 @@ export function Proses() {
   return (
     <section id="proses" className="section proses-section" data-bg="ink">
       <div className="proses-glow" />
-      <SectionMeta index={5} total={TOTAL_SECTIONS} label="Process / Timeline" />
+      <SectionMeta index={6} total={TOTAL_SECTIONS} label="Process / Timeline" />
 
       <div className="proses-grid">
         {/* LEFT — sticky title block */}

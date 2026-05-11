@@ -6,7 +6,7 @@ export function Fitur() {
   return (
     <section id="fitur" className="fitur-section">
       <div className="fitur-hairline-top" />
-      <SectionMeta index={4} total={TOTAL_SECTIONS} label="Capabilities" />
+      <SectionMeta index={5} total={TOTAL_SECTIONS} label="Capabilities" />
 
       <Reveal>
         <div className="fitur-headline">

@@ -1,11 +1,48 @@
-export const TOTAL_SECTIONS = 7;
+export const TOTAL_SECTIONS = 8;
 
 export const navLinks = [
   { label: "Masalah", href: "#masalah" },
   { label: "Solusi", href: "#solusi" },
+  { label: "Backend", href: "#backend" },
   { label: "Fitur", href: "#fitur" },
   { label: "Proses", href: "#proses" },
   { label: "Investasi", href: "#harga" },
+];
+
+export const backendOptions = [
+  {
+    id: "custom",
+    label: "Custom Back Office",
+    subtitle: "via NestJS REST API",
+    tag: "Full Ownership",
+    pros: [
+      "Logika bisnis 100% custom",
+      "Tidak ada biaya langganan",
+      "Integrasi sistem lain bebas",
+      "Source code sepenuhnya milik Anda",
+    ],
+    cons: ["Dev time lebih panjang", "Butuh maintenance berkala"],
+    bestFor:
+      "Bisnis dengan alur kompleks, banyak integrasi sistem, atau skala enterprise",
+    theme: "dark" as const,
+    recommended: true,
+  },
+  {
+    id: "sanity",
+    label: "Sanity CMS",
+    subtitle: "Headless SaaS Platform",
+    tag: "Cepat Launch",
+    pros: [
+      "Studio UI siap pakai & intuitif",
+      "Free tier untuk project kecil",
+      "Real-time collaboration",
+      "CDN global built-in",
+    ],
+    cons: ["Biaya bulanan setelah free tier", "Tergantung vendor Sanity"],
+    bestFor: "Bisnis yang butuh cepat live, konten-heavy, tim non-teknis",
+    theme: "light" as const,
+    recommended: false,
+  },
 ];
 
 export const heroStats = [

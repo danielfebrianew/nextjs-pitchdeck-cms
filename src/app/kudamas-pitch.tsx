@@ -1,3 +1,4 @@
+import { BackendComparison } from "./components/kudamas/backend-comparison";
 import { Fitur } from "./components/kudamas/fitur";
 import { Harga } from "./components/kudamas/harga";
 import { Hero } from "./components/kudamas/hero";
@@ -15,6 +16,7 @@ export default function KudamasPitch() {
         <Hero />
         <PainPoints />
         <Solusi />
+        <BackendComparison />
         <Fitur />
         <Proses />
         <Harga />
